@@ -1,3 +1,7 @@
 enyo.depends(
-	"views.js"
+	"MainView.js",
+	"RestaurantView.js",
+	"RestaurantRepeater.js",
+	"CuisinePicker.js",
+	"RestaurantPopups.js"
 );
