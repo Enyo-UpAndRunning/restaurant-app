@@ -39,8 +39,11 @@ enyo.kind({
 		} else {
 			return this.$.cuisine.valueFromComponent(value);
 		}
+	},
+	shown: function() {
+		this.$.name.focus();
+		this.log("focus()");
 	}
-
 });
 
 enyo.kind({
@@ -80,6 +83,7 @@ enyo.kind({
 		if(event.originator === this) {
 			this.log('showing');
 			this.set('model', new restaurant.RestaurantModel());
+			this.$.detailEditor.shown();
 			// Not returning true because parent may want to handle this event
 		} else {
 			return true;	// Don't need to bubble out picker events
@@ -121,6 +125,16 @@ enyo.kind({
 	bindings: [
 		{ from: 'model', to: '$.detailEditor.model' }
 	],
+	popupShown: function(sender, event) {
+		// Pickers use a popup to show the option list. Don't want to create model when they show.
+		if(event.originator === this) {
+			this.log('showing');
+			this.$.detailEditor.shown();
+			// Not returning true because parent may want to handle this event
+		} else {
+			return true;	// Don't need to bubble out picker events
+		}
+	},
 	done: function() {
 		this.hide();
 		return true;
