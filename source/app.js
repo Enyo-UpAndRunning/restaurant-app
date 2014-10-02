@@ -5,9 +5,9 @@
 */
 
 enyo.kind({
-	name: "restaurant.Application",
-	kind: "enyo.Application",
-	view: "restaurant.MainView",
+	name: 'restaurant.Application',
+	kind: 'enyo.Application',
+	view: 'restaurant.MainView',
 	components: [
 		{
 			name: 'router',
@@ -21,31 +21,24 @@ enyo.kind({
 			publish: true
 		}
 	],
-	create: function() {
-		enyo.LocalStorageSource.create({name: "localData"});
-		var coll = new restaurant.RestaurantCollection({
-		});
+	create: function () {
+		enyo.LocalStorageSource.create({name: 'localData'});
+		var coll = new restaurant.RestaurantCollection();
 		this.inherited(arguments);
 		this.set('collection', coll);
-		// HACK!!!! Remove when patched
-		for(var i = 0; i < this.router.routes.length; i++) {
-			this.router.routes[i].context = this;
-		}
-		// END HACK!!!!
 		this.router.trigger();
 	},
-	showRoot: function() {
+	showRoot: function () {
 		this.view.hideAllPopups();
 	},
-	showNew: function() {
+	showNew: function () {
 		this.view.showNewPopup();
 	},
-	showEdit: function(id) {
+	showEdit: function (id) {
 		this.view.showEditPopup(id);
 	}
-
 });
 
 enyo.ready(function () {
-	new restaurant.Application({name: "app"});
+	new restaurant.Application({name: 'app'});
 });
