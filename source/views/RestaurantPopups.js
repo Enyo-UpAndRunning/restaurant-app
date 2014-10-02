@@ -57,9 +57,9 @@ enyo.kind({
 		{ content: 'Restaurant details', classes: 'restaurant-detail-title' },
 		{ name: 'detailEditor', kind: 'restaurant.DetailEditor' },
 		{ kind: "onyx.Toolbar", layoutKind:"FittableColumnsLayout", classes:"footer-toolbar", components: [
-			{ kind: 'onyx.Button', content: 'Cancel', ontap: 'cancel'},
+			{ kind: 'onyx.Button', content: 'Cancel', ontap: 'cancel' },
 			{ fit:true},
-			{ kind: 'onyx.Button', content: 'Save', ontap: 'save', classes: 'centered' }
+			{ kind: 'onyx.Button', content: 'Save', ontap: 'save' }
 		]}
 	],
 	bindings: [
@@ -115,7 +115,7 @@ enyo.kind({
 		{ kind: "onyx.Toolbar", layoutKind:"FittableColumnsLayout", classes:"footer-toolbar", components: [
 			{ kind: 'onyx.Button', content: 'Delete', ontap: 'delete', classes: 'onyx-negative' },
 			{ fit:true},
-			{ kind: 'onyx.Button', content: 'Done', ontap: 'done'}
+			{ kind: 'onyx.Button', content: 'Done', ontap: 'done' }
 		]}
 	],
 	bindings: [
