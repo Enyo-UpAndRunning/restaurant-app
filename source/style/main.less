@@ -4,8 +4,41 @@
 +    minimize the use of custom CSS.
 +*/
 
-.main-view {
+/***************************
+ * RestaurantView repeater rows
+ ***************************/
+
+.restaurant-view {
+	padding-left: 10px;
+	border-bottom: 1px solid darkgrey;
 }
+
+.restaurant-view.selected {
+	background-color: lightgray;
+}
+
+.restaurant-name {
+	font-size: 20px;
+}
+
+/* Let's have the edit button fade in when it's hovered over. By default, we'll hide it and
+    do a little opacity animation to bring it visible */
+.fade-button {
+	opacity: 0;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+}
+
+/* DataList automatically applies selected class. Focused class will be applied on mounse enter/leave */
+.fade-button.focused,
+.selected .fade-button {
+	opacity: 1;
+}
+
+/***************************
+ * Detail page from popups
+ ***************************/
 
 .restaurant-detail-title {
     font-size: 18px;
@@ -19,30 +52,20 @@
     text-align: right;
 }
 
-.centered {
-    margin: 0 auto;
-    display: table;
+/* Onyx popups are dark grey; black text is hard to read on black */
+.restaurant-detail input {
+	color: white;
 }
 
-.restaurant-view {
-	padding-left: 10px;
-	border-bottom: 1px solid darkgrey;
-}
-
-.restaurant-name {
-	font-size: 20px;
+/* However, focused inputs have a white background; white on white is impossible to read */
+.restaurant-detail .onyx-focused input {
+	color: black;
 }
 
 .restaurant-cuisine {
 }
 
-.fade-button {
-	opacity: 0;
-	transition: opacity .25s ease-in-out;
-	-moz-transition: opacity .25s ease-in-out;
-	-webkit-transition: opacity .25s ease-in-out;
-}
-
-.fade-button.focused {
-	opacity: 1;
+.centered {
+    margin: 0 auto;
+    display: table;
 }

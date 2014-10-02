@@ -1,10 +1,11 @@
 enyo.kind({
 	name: 'restaurant.DetailEditor',
+	classes: 'restaurant-detail',
 	components: [
 		{ classes: 'onyx-toolbar-inline', components: [
 			{ content: 'Name:', classes: 'restaurant-detail-label' },
 			{ kind: 'onyx.InputDecorator', components: [
-				{ name: 'name', kind: 'onyx.Input' }
+				{ name: 'name', kind: 'onyx.Input', classes: 'popup-input' }
 			]}
 		]},
 		{ classes: 'onyx-toolbar-inline', components: [
