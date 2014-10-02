@@ -47,6 +47,7 @@ enyo.kind({
 	name: 'restaurant.NewRestaurantPopup',
 	kind: 'onyx.Popup',
 	modal: true,
+	autoDismiss: false,
 	centered: true,
 	handlers: {
 		onShow: 'popupShown',
@@ -55,11 +56,19 @@ enyo.kind({
 	components: [
 		{ content: 'Restaurant details', classes: 'restaurant-detail-title' },
 		{ name: 'detailEditor', kind: 'restaurant.DetailEditor' },
-		{ kind: 'onyx.Button', content: 'Save', ontap: 'save', classes: 'centered' }
+		{ kind: "onyx.Toolbar", layoutKind:"FittableColumnsLayout", classes:"footer-toolbar", components: [
+			{ kind: 'onyx.Button', content: 'Cancel', ontap: 'cancel' },
+			{ fit:true},
+			{ kind: 'onyx.Button', content: 'Save', ontap: 'save' }
+		]}
 	],
 	bindings: [
 		{ from: 'model', to: '$.detailEditor.model' }
 	],
+	cancel: function() {
+		this.hide();
+		return true;
+	},
 	save: function() {
 		this.app.collection.add(this.model);
 		this.set('model', null);
@@ -94,6 +103,7 @@ enyo.kind({
 	name: 'restaurant.EditRestaurantPopup',
 	kind: 'onyx.Popup',
 	modal: true,
+	autoDismiss: false,
 	centered: true,
 	handlers: {
 		onShow: 'popupShown',
@@ -102,15 +112,22 @@ enyo.kind({
 	components: [
 		{ content: 'Restaurant details', classes: 'restaurant-detail-title' },
 		{ name: 'detailEditor', kind: 'restaurant.DetailEditor' },
-		{ kind: 'onyx.Button', content: 'Delete', ontap: 'delete', classes: 'centered onyx-negative' }
+		{ kind: "onyx.Toolbar", layoutKind:"FittableColumnsLayout", classes:"footer-toolbar", components: [
+			{ kind: 'onyx.Button', content: 'Delete', ontap: 'delete', classes: 'onyx-negative' },
+			{ fit:true},
+			{ kind: 'onyx.Button', content: 'Done', ontap: 'done' }
+		]}
 	],
 	bindings: [
 		{ from: 'model', to: '$.detailEditor.model' }
 	],
+	done: function() {
+		this.hide();
+		return true;
+	},
 	delete: function() {
 		// It might be nice to confirm with the user that they meant to click delete
 		this.model.destroy();
-		this.hide();
-		return true;
+		this.done();
 	}
 });
