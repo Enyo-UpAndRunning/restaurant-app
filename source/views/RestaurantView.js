@@ -4,6 +4,10 @@ enyo.kind({
 	events: {
 		onEdit: ''
 	},
+	handlers: {
+		onleave: 'blurred',
+		onenter: 'focused'
+	},
 	components: [
 		{ components: [
 			{ name: 'name', classes: 'restaurant-name'},
@@ -16,12 +20,18 @@ enyo.kind({
 			]},
 			{ name: 'rating', classes: 'restaurant-rating' }
 		]},
-		{ kind: 'onyx.Button', content: 'Edit', ontap: 'doEdit' }
+		{ name: 'edit', kind: 'onyx.Button', content: 'Edit', ontap: 'doEdit', classes: 'fade-button' }
 	],
 	bindings: [
 		{ from: 'model.name', to: '$.name.content' },
 		{ from: 'model.cuisine', to: '$.cuisine.content' },
 		{ from: 'model.specialty', to: '$.specialty.content' },
 		{ from: 'model.starRating', to: '$.rating.content' }
-	]
+	],
+	blurred: function() {
+		this.$.edit.removeClass('focused');
+	},
+	focused: function() {
+		this.$.edit.addClass('focused');
+	}
 });
