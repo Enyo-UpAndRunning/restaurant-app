@@ -12,7 +12,6 @@ enyo.kind({
 		{
 			name: 'router',
 			kind: 'enyo.Router',
-			triggerOnStart: false,
 			routes: [
 				{ path: '', default: true, handler: 'showRoot' },
 				{ path: 'new', handler: 'showNew' },
@@ -26,7 +25,6 @@ enyo.kind({
 		var coll = new restaurant.RestaurantCollection();
 		this.inherited(arguments);
 		this.set('collection', coll);
-		this.router.trigger();
 	},
 	showRoot: function () {
 		this.view.hideAllPopups();
